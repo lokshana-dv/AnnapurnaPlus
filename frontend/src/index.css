@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans;
+    background-color: var(--bg-page);
+    color: var(--text-body);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  * { box-sizing: border-box; }
+  ::selection { background: rgba(22,163,74,0.2); }
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 9999px; }
+}
+
+/* ── LIGHT THEME ── */
+:root {
+  --bg-page:      #fafff7;
+  --bg-card:      #ffffff;
+  --bg-surface:   #f4fbf4;
+  --bg-input:     #ffffff;
+  --text-primary: #1c3a1c;
+  --text-body:    #374151;
+  --text-muted:   #6b7280;
+  --border:       #e0f0e0;
+  --border-input: #a8d5a8;
+  --brand:        #2d8a4e;
+  --brand-dark:   #1f6b3a;
+  --brand-light:  #e8f8ee;
+  --orange:       #e8720c;
+  --orange-light: #fff4ec;
+  --shadow-sm:    0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md:    0 4px 16px rgba(45,138,78,0.12);
+  --shadow-lg:    0 8px 32px rgba(45,138,78,0.18);
+}
+
+/* ── DARK THEME ── */
+[data-theme="dark"] {
+  --bg-page:      #0f1a10;
+  --bg-card:      #172318;
+  --bg-surface:   #131f14;
+  --bg-input:     #1e2e1f;
+  --text-primary: #e2f5e2;
+  --text-body:    #c8ddc8;
+  --text-muted:   #7a9a7a;
+  --border:       #253a26;
+  --border-input: #2e5230;
+  --brand:        #3dac60;
+  --brand-dark:   #2d8a4e;
+  --brand-light:  #1a3a1f;
+  --orange:       #f28c3a;
+  --orange-light: #3a1a08;
+  --shadow-sm:    0 1px 3px rgba(0,0,0,0.4);
+  --shadow-md:    0 4px 16px rgba(0,0,0,0.4);
+  --shadow-lg:    0 8px 32px rgba(0,0,0,0.5);
+}
+
+@layer components {
+  .btn-primary {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+    color: #fff; font-weight: 700; padding: 0.625rem 1.5rem;
+    border-radius: 0.875rem; border: none; cursor: pointer;
+    box-shadow: 0 2px 12px rgba(45,138,78,0.35);
+    transition: all 0.2s ease;
+  }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(45,138,78,0.45); }
+  .btn-primary:disabled { opacity: 0.55; transform: none; cursor: not-allowed; }
+
+  .btn-secondary {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, var(--orange), #c45e08);
+    color: #fff; font-weight: 700; padding: 0.625rem 1.5rem;
+    border-radius: 0.875rem; border: none; cursor: pointer;
+    box-shadow: 0 2px 12px rgba(232,114,12,0.3);
+    transition: all 0.2s ease;
+  }
+  .btn-secondary:hover { transform: translateY(-1px); }
+
+  .btn-outline {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: transparent; color: var(--brand);
+    border: 2px solid var(--brand); font-weight: 700;
+    padding: 0.625rem 1.5rem; border-radius: 0.875rem; cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .btn-outline:hover { background: var(--brand); color: #fff; }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    transition: background 0.3s ease, border-color 0.3s ease;
+  }
+  .card-hover {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--brand);
+  }
+
+  .input-field {
+    width: 100%;
+    background: var(--bg-input);
+    border: 1.5px solid var(--border-input);
+    color: var(--text-body);
+    border-radius: 0.875rem;
+    padding: 0.625rem 1rem;
+    font-size: 0.875rem;
+    outline: none;
+    transition: all 0.2s ease;
+  }
+  .input-field::placeholder { color: var(--text-muted); }
+  .input-field:focus {
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px rgba(45,138,78,0.15);
+  }
+
+  .badge { display: inline-flex; align-items: center; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; }
+  .badge-green  { background: var(--brand-light); color: var(--brand-dark); }
+  .badge-orange { background: var(--orange-light); color: var(--orange); }
+  .badge-blue   { background: #dbeafe; color: #1d4ed8; }
+  .badge-red    { background: #fee2e2; color: #dc2626; }
+  [data-theme="dark"] .badge-blue { background: #1e3a5f; color: #60a5fa; }
+  [data-theme="dark"] .badge-red  { background: #3b1515; color: #f87171; }
+
+  .spinner {
+    display: inline-block; border-radius: 9999px;
+    border: 3px solid var(--brand-light);
+    border-top-color: var(--brand);
+    animation: spin 0.7s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .fade-in   { animation: fadeUp 0.5s ease both; }
+  .fade-in-2 { animation: fadeUp 0.5s ease 0.1s both; }
+  .fade-in-3 { animation: fadeUp 0.5s ease 0.2s both; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .status-available { background: #dcfce7; color: #166534; }
+  .status-pending   { background: #fef9c3; color: #854d0e; }
+  .status-delivered { background: #dbeafe; color: #1e40af; }
+  .status-matched   { background: #f3e8ff; color: #6b21a8; }
+  .status-accepted  { background: #ffedd5; color: #c2410c; }
+  [data-theme="dark"] .status-available { background: #14532d; color: #86efac; }
+  [data-theme="dark"] .status-pending   { background: #451a03; color: #fcd34d; }
+  [data-theme="dark"] .status-delivered { background: #1e3a5f; color: #93c5fd; }
+  [data-theme="dark"] .status-matched   { background: #3b0764; color: #d8b4fe; }
+  [data-theme="dark"] .status-accepted  { background: #431407; color: #fdba74; }
+
+  [data-theme="dark"] .leaflet-layer { filter: invert(1) hue-rotate(180deg) brightness(0.85); }
+  [data-theme="dark"] .leaflet-popup-content-wrapper,
+  [data-theme="dark"] .leaflet-popup-tip { background: var(--bg-card) !important; color: var(--text-body) !important; }
+  [data-theme="dark"] .leaflet-control-zoom a { background: var(--bg-card) !important; color: var(--text-body) !important; border-color: var(--border) !important; }
+
+  @keyframes heroProgress { from { width:0% } to { width:100% } }
+  @keyframes pulse-dot { 0%,100% { transform:scale(1); opacity:1; } 50% { transform:scale(1.5); opacity:0.6; } }
+}
