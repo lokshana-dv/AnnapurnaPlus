@@ -237,4 +237,3 @@ Priority Score = (1 / distance_km) + (1 / hours_until_expiry)
 
 ---
 
-*ANNAPURNA+ — Final Year Project | Tamil Nadu Engineering College*
